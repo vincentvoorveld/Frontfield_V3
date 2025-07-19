@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,30 +20,7 @@ export default function Footer() {
             <p className="text-primary-foreground/80 leading-relaxed mb-6">
               Wij maken eenvoudige, effectieve, no-nonsense websites die bedrijven helpen groeien en online succesvol te zijn.
             </p>
-            <div className="flex space-x-4">
-              <a 
-                href="https://linkedin.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://github.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a 
-                href="mailto:info@frontfield.nl"
-                className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
+
           </div>
           
           {/* Services */}
@@ -84,9 +61,6 @@ export default function Footer() {
               <p className="text-primary-foreground/80 text-sm">
                 <Mail className="inline w-4 h-4 mr-2" />
                 info@frontfield.nl
-              </p>
-              <p className="text-primary-foreground/80 text-sm mt-1">
-                📞 +31 6 12345678
               </p>
             </div>
           </div>
