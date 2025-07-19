@@ -1,11 +1,12 @@
 import { Gift, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import sterImage from "@assets/Ontwerp zonder titel_1752929121475.png";
 
 export default function Portfolio() {
   const portfolioItems = [
     {
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400",
+      image: sterImage,
       title: "Ster van het Verhaal",
       description: "Volledig gepersonaliseerde boeken met jouw kind(eren) als de ster van het verhaal",
       link: "https://stervanhetverhaal.nl/"
