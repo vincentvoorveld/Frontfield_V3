@@ -53,21 +53,22 @@ export default function Portfolio() {
           ))}
           
           {/* Free website offer card */}
-          <Card className="hover-lift cursor-pointer animate-float bg-gradient-to-br from-secondary to-blue-600 text-white border-none">
-            <CardContent className="p-6 text-center">
-              <Gift className="text-3xl mb-4 opacity-90 w-8 h-8 mx-auto" />
-              <h3 className="text-xl font-bold mb-3">Jouw Website Hier!</h3>
-              <p className="text-blue-100 text-sm mb-6 leading-relaxed">
+          <Card className="hover-lift cursor-pointer border-2 border-dashed border-secondary/40 bg-white/50 backdrop-blur-sm">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-secondary/10 rounded-full flex items-center justify-center">
+                <Gift className="text-secondary w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-bold text-secondary mb-4">Jouw Website Hier!</h3>
+              <p className="text-muted-foreground text-sm mb-6 leading-relaxed max-w-xs mx-auto">
                 Wil je een gratis website? Wij hebben op dit moment de ruimte om één gratis website te maken. Dit geeft ons de kans om te groeien, te leren en ons portfolio uit te breiden en geeft jou een gratis website!*
               </p>
               <Button 
-                variant="secondary"
-                className="bg-white text-secondary hover:bg-blue-50 transition-colors duration-200 w-full"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors duration-200 mb-3"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Claim jouw gratis website!
               </Button>
-              <p className="text-blue-200 text-xs mt-3">*(voorwaarden zijn van toepassing)</p>
+              <p className="text-muted-foreground text-xs">*(voorwaarden zijn van toepassing)</p>
             </CardContent>
           </Card>
         </div>
