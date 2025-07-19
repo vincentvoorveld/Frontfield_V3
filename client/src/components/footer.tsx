@@ -71,17 +71,13 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Juridisch</h4>
             <ul className="space-y-3 text-primary-foreground/80 mb-8">
               <li>
-                <Link href="/privacy">
-                  <a className="hover:text-primary-foreground transition-colors duration-200">
-                    Privacybeleid
-                  </a>
+                <Link href="/privacy" className="hover:text-primary-foreground transition-colors duration-200">
+                  Privacybeleid
                 </Link>
               </li>
               <li>
-                <Link href="/terms">
-                  <a className="hover:text-primary-foreground transition-colors duration-200">
-                    Algemene Voorwaarden
-                  </a>
+                <Link href="/terms" className="hover:text-primary-foreground transition-colors duration-200">
+                  Algemene Voorwaarden
                 </Link>
               </li>
             </ul>
