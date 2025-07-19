@@ -5,12 +5,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   const services = [
-    "Website ontwikkeling",
-    "E-commerce oplossingen", 
-    "Website onderhoud",
-    "Domeinnaam registratie",
-    "SEO optimalisatie",
-    "Hosting services"
+    "Website laten maken",
+    "Onderhoud",
+    "Domeinnaam"
   ];
 
   return (
