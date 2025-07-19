@@ -53,17 +53,24 @@ export default function Portfolio() {
           ))}
           
           {/* Free website offer card */}
-          <Card className="hover-lift cursor-pointer border-2 border-dashed border-secondary/40 bg-white/50 backdrop-blur-sm">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 mx-auto mb-6 bg-secondary/10 rounded-full flex items-center justify-center">
-                <Gift className="text-secondary w-8 h-8" />
+          <Card className="hover-lift cursor-pointer border-2 border-dashed border-secondary/40 bg-white/50 backdrop-blur-sm overflow-hidden">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300" 
+                alt="Laptop met dashboard"
+                className="w-full h-32 object-cover opacity-80" 
+              />
+              <div className="absolute top-2 left-2 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-medium">
+                Gratis Website
               </div>
-              <h3 className="text-2xl font-bold text-secondary mb-4">Jouw Website Hier!</h3>
-              <p className="text-muted-foreground text-sm mb-6 leading-relaxed max-w-xs mx-auto">
+            </div>
+            <CardContent className="p-6 text-center">
+              <h3 className="text-xl font-bold text-secondary mb-3">Jouw Website Hier!</h3>
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 Wil je een gratis website? Wij hebben op dit moment de ruimte om één gratis website te maken. Dit geeft ons de kans om te groeien, te leren en ons portfolio uit te breiden en geeft jou een gratis website!*
               </p>
               <Button 
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors duration-200 mb-3"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors duration-200 mb-3 w-full"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Claim jouw gratis website!
