@@ -1,0 +1,46 @@
+Maak een overzichtelijke, effectieve en gebruiksvriendelijke website die ik kan koppelen aan Github.
+Er moet voldoende witruimte op de pagina zijn.
+De site heet: Frontfield Websites
+De site is in het nederlands
+De site moet vooral goed werken en er goed uit zien op een mobiele telefoon
+De site moet er zeer professioneel uit zien en ook bijzonder gebruiksvriendelijk. Het moet een geweldig design zijn, zonder dat de gebruiker het design "ziet"
+Geen opvulling en onnodige elementen
+Zorg dat logische elementen klikbaar zijn, oplichten/animeren als je er overheen hoovert en werken.
+Pas in lijn met de punten hierboven alles aan waardoor je denkt dat de site beter wordt.
+
+Hero sectie: 
+
+Hoofdregel: Eenvoudige websites die doen wat ze moeten doen: 
+Subregel: Bezoekers omzetten in klanten
+Onder subregel: Wij maken heldere, effectieve websites. Gebouwd om je bedrijf te laten groeien.
+
+Daaronder een CTA knop met "Start je project" en "Plan je gratis gesprek"
+
+Rollende band met logos van klanten, gebruik voor nu placeholder.
+
+Een onderdeel met "Diensten"
+	- Website laten maken
+	- Onderhoud
+	- Domeinnaam
+
+Een onderdeel "Portfolio" 
+Gebruik drie placeholders voor nu + 1 onderdeel dat aangeeft: 
+Jouw Website Hier!
+Wil je een gratis website? Wij hebben op dit moment de ruimte om één gratis website te maken. Dit geeft ons de kans om te groeien, te leren en ons portfolio uit te breiden en geeft jou een gratis website!*
+*(voorwaarden zijn van toepassing)
+Claim jouw gratis website! (in het specifieke onderdeel)
+Een CTA knop met "Bespreek jouw project" (onder het deel met portfolio
+
+Een onderdeel "Klaar om te beginnen?"
+Een formulier waarop men gegevens kan achterlaten
+ 
+Footer:
+Frontfield
+Wij maken eenvoudige, effectieve, no-nonsense websites die bedrijven helpen groeien en online succesvol te zijn.
+
+Diensten
+Vul naar eigen inzicht
+
+Juridisch
+Privacybeleid (gebruik voor nu placeholder tekst)
+Algemene Voorwaarden (gebruik voor nu placeholder tekst)
