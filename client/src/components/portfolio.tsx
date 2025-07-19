@@ -7,7 +7,8 @@ export default function Portfolio() {
     {
       image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400",
       title: "Ster van het Verhaal",
-      description: "Professionele website voor storytelling bedrijf"
+      description: "Volledig gepersonaliseerde boeken met jouw kind(eren) als de ster van het verhaal",
+      link: "https://stervanhetverhaal.nl/"
     },
     {
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
@@ -35,7 +36,11 @@ export default function Portfolio() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {portfolioItems.map((item, index) => (
-            <Card key={index} className="hover-lift cursor-pointer overflow-hidden">
+            <Card 
+              key={index} 
+              className="hover-lift cursor-pointer overflow-hidden"
+              onClick={() => item.link && window.open(item.link, '_blank')}
+            >
               <img 
                 src={item.image} 
                 alt={item.title}
