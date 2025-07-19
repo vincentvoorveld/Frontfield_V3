@@ -1,11 +1,16 @@
+import sterLogo from "@assets/Ster van het Verhaal_1752928699315.png";
+import virtualAssistantLogo from "@assets/Virtual Assistent_1752928699316.png";
+import fitnessLogo from "@assets/Fitness Center_1752928699317.png";
+import barbershopLogo from "@assets/Barbershop_1752928699318.png";
+import ariaLogo from "@assets/Aria Silverwood_1752928699319.png";
+
 export default function ClientLogos() {
   const logos = [
-    "Klant Logo 1",
-    "Klant Logo 2", 
-    "Klant Logo 3",
-    "Klant Logo 4",
-    "Klant Logo 5",
-    "Klant Logo 6"
+    { src: sterLogo, alt: "Ster van het Verhaal" },
+    { src: virtualAssistantLogo, alt: "Virtual Assistant" },
+    { src: fitnessLogo, alt: "Fitness Center" },
+    { src: barbershopLogo, alt: "Barbershop Nieuwland" },
+    { src: ariaLogo, alt: "Aria Silverwood" }
   ];
 
   return (
@@ -23,9 +28,11 @@ export default function ClientLogos() {
                 key={index}
                 className="flex items-center justify-center min-w-[200px] h-16 mx-8 opacity-60 hover:opacity-100 transition-opacity duration-300"
               >
-                <div className="bg-muted rounded-lg px-6 py-3 text-muted-foreground font-medium">
-                  {logo}
-                </div>
+                <img 
+                  src={logo.src} 
+                  alt={logo.alt}
+                  className="max-h-12 max-w-32 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                />
               </div>
             ))}
           </div>
