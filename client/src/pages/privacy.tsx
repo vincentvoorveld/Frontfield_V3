@@ -25,42 +25,58 @@ export default function Privacy() {
             <CardTitle>Privacy & Gegevensbescherming</CardTitle>
           </CardHeader>
           <CardContent className="prose prose-neutral max-w-none">
-            <h3>Inleiding</h3>
             <p>
-              Frontfield Websites ("wij", "ons", "onze") respecteert uw privacy en is toegewijd aan het beschermen van uw persoonlijke gegevens. Dit privacybeleid informeert u over hoe wij uw gegevens verzamelen, gebruiken en beschermen wanneer u gebruik maakt van onze website en diensten.
+              Bij Frontfield respecteren wij de privacy van onze klanten en bezoekers. In dit privacybeleid leggen we uit welke persoonsgegevens wij verzamelen, met welk doel, en hoe wij hiermee omgaan.
             </p>
 
             <h3>Welke gegevens verzamelen wij?</h3>
-            <p>Wij kunnen de volgende persoonlijke gegevens van u verzamelen:</p>
-            <ul>
-              <li>Naam en contactgegevens (e-mailadres, telefoonnummer)</li>
-              <li>Bedrijfsinformatie</li>
-              <li>Projectvereisten en voorkeuren</li>
-              <li>Communicatie tussen u en ons</li>
-            </ul>
-
-            <h3>Hoe gebruiken wij uw gegevens?</h3>
-            <p>Uw gegevens worden gebruikt om:</p>
-            <ul>
-              <li>Contact met u op te nemen over uw project</li>
-              <li>Onze diensten te leveren</li>
-              <li>U te informeren over updates en nieuwe diensten</li>
-              <li>Onze website en diensten te verbeteren</li>
-            </ul>
-
-            <h3>Gegevensbescherming</h3>
             <p>
-              Wij implementeren passende technische en organisatorische maatregelen om uw persoonlijke gegevens te beschermen tegen ongeautoriseerde toegang, wijziging, openbaarmaking of vernietiging.
+              Wij verzamelen uitsluitend persoonsgegevens die u zelf verstrekt via ons contactformulier of per e-mail. Dit kunnen de volgende gegevens zijn:
+            </p>
+            <ul>
+              <li>Naam</li>
+              <li>E-mailadres</li>
+              <li>Telefoonnummer</li>
+              <li>Eventuele andere informatie die u zelf verstrekt in uw bericht</li>
+            </ul>
+
+            <h3>Waarvoor gebruiken wij deze gegevens?</h3>
+            <p>Uw persoonsgegevens worden uitsluitend gebruikt voor de volgende doeleinden:</p>
+            <ul>
+              <li>Het beantwoorden van uw vragen en verzoeken</li>
+              <li>Het opstellen van offertes en overeenkomsten</li>
+              <li>Het leveren van onze diensten (bouwen en onderhouden van uw website)</li>
+              <li>Administratieve doeleinden (zoals facturatie)</li>
+            </ul>
+            <p>
+              Wij verkopen uw gegevens niet aan derden en delen deze alleen indien dit strikt noodzakelijk is voor de uitvoering van onze diensten (bijv. voor hosting of domeinnaamregistratie).
+            </p>
+
+            <h3>Hoe worden uw gegevens opgeslagen?</h3>
+            <p>
+              Uw gegevens worden opgeslagen op beveiligde servers van onze hostingpartner en in ons e-mailaccount (bijv. info@frontfield.nl). Wij nemen passende technische en organisatorische maatregelen om uw gegevens te beschermen.
+            </p>
+
+            <h3>Bewaartermijn</h3>
+            <p>
+              Wij bewaren uw persoonsgegevens niet langer dan noodzakelijk is voor het leveren van onze diensten en het voldoen aan wettelijke verplichtingen (zoals de bewaartermijn voor facturen).
             </p>
 
             <h3>Uw rechten</h3>
             <p>
-              Onder de AVG heeft u verschillende rechten met betrekking tot uw persoonlijke gegevens, waaronder het recht op toegang, rectificatie, verwijdering en overdraagbaarheid van uw gegevens.
+              U heeft het recht om uw persoonsgegevens in te zien, te laten corrigeren of te laten verwijderen. U kunt hiervoor contact opnemen via: info@frontfield.nl
             </p>
 
-            <h3>Contact</h3>
+            <h3>Cookies</h3>
             <p>
-              Voor vragen over dit privacybeleid kunt u contact met ons opnemen via info@frontfield.nl
+              Onze website maakt geen gebruik van cookies.
+            </p>
+
+            <h3>Contactgegevens</h3>
+            <p>
+              <strong>Frontfield</strong><br/>
+              Website: <a href="http://www.frontfield.nl" className="text-blue-600 hover:underline">www.frontfield.nl</a><br/>
+              E-mail: info@frontfield.nl
             </p>
           </CardContent>
         </Card>
