@@ -58,7 +58,7 @@ export default function Portfolio() {
               <img 
                 src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300" 
                 alt="Laptop met dashboard"
-                className="w-full h-32 object-cover opacity-80" 
+                className="w-full h-48 object-cover opacity-80" 
               />
               <div className="absolute top-2 left-2 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-medium">
                 Gratis Website
