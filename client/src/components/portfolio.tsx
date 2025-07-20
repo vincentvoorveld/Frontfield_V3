@@ -2,6 +2,7 @@ import { Gift, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import sterImage from "@assets/Ontwerp zonder titel_1752929121475.png";
+import silverwoodImage from "@assets/600x400 pixels voorbeeld website_1753030380557.png";
 
 export default function Portfolio() {
   const portfolioItems = [
@@ -12,9 +13,10 @@ export default function Portfolio() {
       link: "https://stervanhetverhaal.nl/"
     },
     {
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      title: "Webshop Platform", 
-      description: "Complete e-commerce oplossing"
+      image: silverwoodImage,
+      title: "Silverwood Coloring", 
+      description: "Portfolio website met kleurboeken, te bestellen op Amazon",
+      link: "https://silverwoodcoloring.com/"
     },
     {
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
