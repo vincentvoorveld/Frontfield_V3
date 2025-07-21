@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Send, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,12 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -25,7 +20,10 @@ export default function ContactForm() {
     
     // Create email content
     const subject = `Nieuwe projectaanvraag van ${name}`;
-    const body = `
+    const body = `Hallo,
+
+Ik heb interesse in jullie webdesign diensten. Hieronder mijn gegevens:
+
 Naam: ${name}
 E-mailadres: ${email}
 Bedrijfsnaam: ${company || 'Niet opgegeven'}
@@ -34,72 +32,15 @@ Budget indicatie: ${budget || 'Niet opgegeven'}
 Projectomschrijving:
 ${message}
 
----
-Dit bericht is verzonden via het contactformulier op frontfield.nl
-    `.trim();
-    
-    // Try Formspree first, fallback to mailto
-    try {
-      const response = await fetch('https://formspree.io/f/mwpqvyvg', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          company,
-          budget,
-          message,
-          _subject: subject
-        })
-      });
-      
-      if (response.ok) {
-        setIsSubmitted(true);
-        form.reset();
-      } else {
-        throw new Error('Formspree failed');
-      }
-    } catch (error) {
-      // Fallback to mailto
-      const mailtoLink = `mailto:info@frontfield.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoLink;
-      setIsSubmitted(true);
-      form.reset();
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+Graag zou ik meer informatie ontvangen over jullie diensten.
 
-  if (isSubmitted) {
-    return (
-      <section id="contact" className="py-20 bg-neutral">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="shadow-sm">
-            <CardContent className="p-8 md:p-12 text-center">
-              <div className="text-green-600 mb-4">
-                <Send className="w-16 h-16 mx-auto" />
-              </div>
-              <h2 className="text-3xl font-bold text-primary mb-4">
-                Bedankt voor je bericht!
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                Je e-mailprogramma wordt geopend met je aanvraag. Verstuur het e-mailbericht om je aanvraag te voltooien, of neem direct contact met ons op via info@frontfield.nl
-              </p>
-              <Button 
-                onClick={() => setIsSubmitted(false)}
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
-              >
-                Nieuw bericht verzenden
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-    );
-  }
+Met vriendelijke groet,
+${name}`;
+    
+    // Open email client
+    const mailtoLink = `mailto:info@frontfield.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoLink, '_self');
+  };
 
   return (
     <section id="contact" className="py-20 bg-neutral">
@@ -194,11 +135,10 @@ Dit bericht is verzonden via het contactformulier op frontfield.nl
                 <Button 
                   type="submit" 
                   size="lg"
-                  disabled={isSubmitting}
                   className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl px-12 py-4 text-lg"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  {isSubmitting ? "Verzenden..." : "Verzend aanvraag"}
+                  Verzend aanvraag
                 </Button>
               </div>
             </form>
