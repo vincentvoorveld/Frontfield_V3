@@ -63,7 +63,7 @@ export default function Portfolio() {
           ))}
           
           {/* Free website offer card */}
-          <Card className="hover-lift cursor-pointer border-2 border-dashed border-secondary/40 bg-white/50 backdrop-blur-sm overflow-hidden">
+          <Card className="hover-lift cursor-pointer border-2 border-dashed border-secondary/40 bg-white/50 backdrop-blur-sm overflow-hidden group relative">
             <div className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300" 
@@ -76,17 +76,28 @@ export default function Portfolio() {
             </div>
             <CardContent className="p-6 text-center">
               <h3 className="text-xl font-bold text-secondary mb-3">Jouw Website Hier!</h3>
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                Wil je een gratis website? Wij hebben op dit moment de ruimte om één gratis website te maken. Dit geeft ons de kans om te groeien, te leren en ons portfolio uit te breiden en geeft jou een gratis website!*
+              <p className="text-muted-foreground text-sm mb-4">
+                Wil je een gratis website? Wij hebben op dit moment de ruimte om één gratis website te maken.
               </p>
               <Button 
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors duration-200 mb-3 w-full"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors duration-200 w-full"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Claim jouw gratis website!
               </Button>
-              <p className="text-muted-foreground text-xs">*(voorwaarden zijn van toepassing)</p>
             </CardContent>
+            
+            {/* Tooltip */}
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-sm rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 w-80 max-w-sm">
+              <div className="text-center">
+                <p className="mb-2">
+                  Dit geeft ons de kans om te groeien, te leren en ons portfolio uit te breiden en geeft jou een gratis website!*
+                </p>
+                <p className="text-xs text-gray-300">*(voorwaarden zijn van toepassing)</p>
+              </div>
+              {/* Arrow */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-900"></div>
+            </div>
           </Card>
         </div>
         
