@@ -14,7 +14,7 @@ export default function ClientLogos() {
   ];
 
   return (
-    <section className="py-16 bg-white border-y border-border">
+    <section className="py-16 bg-primary border-y border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden">
           <div className="flex animate-scroll">
@@ -22,12 +22,12 @@ export default function ClientLogos() {
             {[...logos, ...logos].map((logo, index) => (
               <div 
                 key={index}
-                className="flex items-center justify-center min-w-[300px] h-32 mx-12 opacity-60 hover:opacity-100 transition-opacity duration-300"
+                className="flex items-center justify-center min-w-[400px] h-48 mx-16 opacity-70 hover:opacity-100 transition-opacity duration-300"
               >
                 <img 
                   src={logo.src} 
                   alt={logo.alt}
-                  className="max-h-24 max-w-64 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="max-h-48 max-w-80 object-contain filter brightness-0 invert hover:brightness-100 hover:invert-0 transition-all duration-300"
                 />
               </div>
             ))}
