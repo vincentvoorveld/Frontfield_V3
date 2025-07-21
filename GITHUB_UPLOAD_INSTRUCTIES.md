@@ -10,12 +10,12 @@
 
 ### Bestand 1: index.html
 - **Locatie**: Vervang de huidige index.html in de root van je repository
-- **Nieuw**: CSS (index-CiHqg7xa.css) en JS (index-DvwN_Dy7.js) bestanden
+- **Nieuw**: CSS (index-CiHqg7xa.css) en JS (index-B9RAo6Ul.js) bestanden
 
 ### Bestand 2: assets/ folder
 - **Locatie**: Vervang de hele assets/ folder in je repository
 - **Bijgewerkt**: 
-  - Aria Silverwood afbeelding nu correct gebruikt
+  - Juiste Aria Silverwood afbeelding (600x400 pixels) nu gebruikt
   - Nieuwe CSS en JavaScript bestanden
   - Alle portfolio afbeeldingen
 
