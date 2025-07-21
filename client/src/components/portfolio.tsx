@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import sterImage from "@assets/Ontwerp zonder titel_1752929121475.png";
 import silverwoodImage from "@assets/600x400 pixels voorbeeld website_1753030380557.png";
-import barbershopImage from "@assets/600x400 pixels voorbeeld website_1753108036976.png";
+import barbershopImage from "@assets/600x400 pixels voorbeeld website (1)_1753108344348.png";
 
 export default function Portfolio() {
   const portfolioItems = [
