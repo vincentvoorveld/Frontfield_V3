@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import sterImage from "@assets/Ontwerp zonder titel_1752929121475.png";
 import silverwoodImage from "@assets/600x400 pixels voorbeeld website_1753030380557.png";
+import barbershopImage from "@assets/600x400 pixels voorbeeld website_1753108036976.png";
 
 export default function Portfolio() {
   const portfolioItems = [
@@ -19,9 +20,10 @@ export default function Portfolio() {
       link: "https://silverwoodcoloring.com/"
     },
     {
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      title: "Bedrijfswebsite",
-      description: "Professionele consultancy website"
+      image: barbershopImage,
+      title: "Barbershop Nieuwland",
+      description: "Professionele barbershop website voor de kapper in Amersfoort",
+      link: "https://vincentvoorveld.github.io/BarberShop-Nieuwland/"
     }
   ];
 

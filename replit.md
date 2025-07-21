@@ -6,11 +6,15 @@ This is a modern full-stack web application for Frontfield Websites, a Dutch web
 
 ## Recent Changes (July 21, 2025)
 
-- **Portfolio Fixed**: Corrected Aria Silverwood image reference for "Silverwood Coloring" portfolio item
+- **Portfolio Complete**: Added all three portfolio items with real client websites
+  - "Ster van het Verhaal" - personalized children's books
+  - "Silverwood Coloring" - coloring book portfolio (600x400 Aria Silverwood image)
+  - "Barbershop Nieuwland" - professional barbershop website in Amersfoort
 - **Formspree Integration**: Implemented working contact form using Formspree (https://formspree.io/f/mwpqvyvg)
 - **Contact Form Features**: Added loading states, success messages, error handling, and form reset
+- **All Links Working**: Portfolio items clickable and open in new tabs
 - **GitHub Pages Ready**: Built static files with correct relative paths for deployment
-- **File Names Updated**: New build includes index-CiHqg7xa.css and index-DvwN_Dy7.js
+- **File Names Updated**: Current build includes index-CiHqg7xa.css and index-DaOumpmN.js
 
 ## User Preferences
 

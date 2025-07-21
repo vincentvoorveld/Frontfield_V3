@@ -10,7 +10,7 @@
 
 ### Bestand 1: index.html
 - **Locatie**: Vervang de huidige index.html in de root van je repository
-- **Nieuw**: CSS (index-CiHqg7xa.css) en JS (index-B9RAo6Ul.js) bestanden
+- **Nieuw**: CSS (index-CiHqg7xa.css) en JS (index-DaOumpmN.js) bestanden
 
 ### Bestand 2: assets/ folder
 - **Locatie**: Vervang de hele assets/ folder in je repository
@@ -28,8 +28,9 @@
 
 ## Portfolio:
 - "Ster van het Verhaal" met juiste afbeelding
-- "Silverwood Coloring" met Aria Silverwood afbeelding
-- Beide links werken en openen in nieuwe tab
+- "Silverwood Coloring" met Aria Silverwood afbeelding (600x400)
+- "Barbershop Nieuwland" met barbershop website afbeelding
+- Alle drie links werken en openen in nieuwe tab
 
 ## Upload stappen:
 1. Ga naar je GitHub repository
