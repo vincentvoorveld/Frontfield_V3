@@ -10,7 +10,7 @@
 
 ### Bestand 1: index.html
 - **Locatie**: Vervang de huidige index.html in de root van je repository
-- **Nieuw**: CSS (index-D6NeeE7S.css) en JS (index-CGVFEPB4.js) bestanden
+- **Nieuw**: CSS (index-CiHqg7xa.css) en JS (index-BVMrxREQ.js) bestanden
 
 ### Bestand 2: assets/ folder
 - **Locatie**: Vervang de hele assets/ folder in je repository
