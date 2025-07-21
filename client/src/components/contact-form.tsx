@@ -1,65 +1,40 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Send, Shield } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Naam moet minimaal 2 karakters bevatten"),
-  email: z.string().email("Voer een geldig e-mailadres in"),
-  company: z.string().optional(),
-  budget: z.string().optional(),
-  message: z.string().min(10, "Bericht moet minimaal 10 karakters bevatten")
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactForm() {
-  const { toast } = useToast();
-  
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      budget: "",
-      message: ""
-    }
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: ContactFormValues) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      return response.json();
-    },
-    onSuccess: (data) => {
-      toast({
-        title: "Bericht verzonden!",
-        description: data.message,
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/mwpqvyvg', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
-      form.reset();
-    },
-    onError: (error: any) => {
-      toast({
-        variant: "destructive",
-        title: "Er ging iets mis",
-        description: error.message || "Probeer het later opnieuw.",
-      });
+      
+      if (response.ok) {
+        form.reset();
+        alert('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
+      } else {
+        throw new Error('Er ging iets mis bij het verzenden van je bericht.');
+      }
+    } catch (error) {
+      alert('Er ging iets mis. Probeer het later opnieuw of neem direct contact met ons op.');
+    } finally {
+      setIsSubmitting(false);
     }
-  });
-
-  const onSubmit = (data: ContactFormValues) => {
-    contactMutation.mutate(data);
   };
 
   return (
@@ -76,114 +51,93 @@ export default function ContactForm() {
         
         <Card className="shadow-sm">
           <CardContent className="p-8 md:p-12">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-foreground">
+                    Naam <span className="text-red-500">*</span>
+                  </label>
+                  <Input 
+                    id="name"
                     name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          Naam <span className="text-red-500">*</span>
-                        </FormLabel>
-                        <FormControl>
-                          <Input placeholder="Je volledige naam" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                    type="text"
+                    placeholder="Je volledige naam"
+                    required
+                    className="w-full"
                   />
-                  
-                  <FormField
-                    control={form.control}
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-foreground">
+                    E-mailadres <span className="text-red-500">*</span>
+                  </label>
+                  <Input 
+                    id="email"
                     name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          E-mailadres <span className="text-red-500">*</span>
-                        </FormLabel>
-                        <FormControl>
-                          <Input type="email" placeholder="je@email.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                    type="email"
+                    placeholder="je@email.com"
+                    required
+                    className="w-full"
                   />
                 </div>
-                
-                <FormField
-                  control={form.control}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="company" className="text-sm font-medium text-foreground">
+                  Bedrijfsnaam
+                </label>
+                <Input 
+                  id="company"
                   name="company"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Bedrijfsnaam</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Je bedrijfsnaam (optioneel)" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  type="text"
+                  placeholder="Je bedrijfsnaam (optioneel)"
+                  className="w-full"
                 />
-                
-                <FormField
-                  control={form.control}
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="budget" className="text-sm font-medium text-foreground">
+                  Budget indicatie
+                </label>
+                <select 
+                  id="budget"
                   name="budget"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Budget indicatie</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Selecteer een budget" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="500-1000">€500 - €1.000</SelectItem>
-                          <SelectItem value="1000-2500">€1.000 - €2.500</SelectItem>
-                          <SelectItem value="2500-5000">€2.500 - €5.000</SelectItem>
-                          <SelectItem value="5000+">€5.000+</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
+                  className="w-full h-10 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border border-input bg-background rounded-md"
+                >
+                  <option value="">Selecteer een budget</option>
+                  <option value="500-1000">€500 - €1.000</option>
+                  <option value="1000-2500">€1.000 - €2.500</option>
+                  <option value="2500-5000">€2.500 - €5.000</option>
+                  <option value="5000+">€5.000+</option>
+                </select>
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium text-foreground">
+                  Projectomschrijving <span className="text-red-500">*</span>
+                </label>
+                <Textarea 
+                  id="message"
                   name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Projectomschrijving <span className="text-red-500">*</span>
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder="Vertel ons over je project, doelen en wensen..."
-                          className="resize-none"
-                          rows={5}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  placeholder="Vertel ons over je project, doelen en wensen..."
+                  className="resize-none w-full"
+                  rows={5}
+                  required
                 />
-                
-                <div className="text-center">
-                  <Button 
-                    type="submit" 
-                    size="lg"
-                    disabled={contactMutation.isPending}
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl px-12 py-4 text-lg"
-                  >
-                    <Send className="mr-2 h-5 w-5" />
-                    {contactMutation.isPending ? "Verzenden..." : "Verzend aanvraag"}
-                  </Button>
-                </div>
-              </form>
-            </Form>
+              </div>
+              
+              <div className="text-center">
+                <Button 
+                  type="submit" 
+                  size="lg"
+                  disabled={isSubmitting}
+                  className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl px-12 py-4 text-lg"
+                >
+                  <Send className="mr-2 h-5 w-5" />
+                  {isSubmitting ? "Verzenden..." : "Verzend aanvraag"}
+                </Button>
+              </div>
+            </form>
             
             <div className="mt-8 pt-8 border-t border-border text-center">
               <p className="text-muted-foreground text-sm">
