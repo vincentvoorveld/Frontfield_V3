@@ -4,6 +4,14 @@
 
 This is a modern full-stack web application for Frontfield Websites, a Dutch web development service company. The application serves as a marketing website with contact form functionality, built using React/TypeScript frontend with an Express.js backend and PostgreSQL database integration.
 
+## Recent Changes (July 21, 2025)
+
+- **Portfolio Fixed**: Corrected Aria Silverwood image reference for "Silverwood Coloring" portfolio item
+- **Formspree Integration**: Implemented working contact form using Formspree (https://formspree.io/f/mwpqvyvg)
+- **Contact Form Features**: Added loading states, success messages, error handling, and form reset
+- **GitHub Pages Ready**: Built static files with correct relative paths for deployment
+- **File Names Updated**: New build includes index-CiHqg7xa.css and index-DvwN_Dy7.js
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.

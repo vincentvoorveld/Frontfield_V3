@@ -2,7 +2,7 @@ import { Gift, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import sterImage from "@assets/Ontwerp zonder titel_1752929121475.png";
-import silverwoodImage from "@assets/600x400 pixels voorbeeld website_1753030380557.png";
+import silverwoodImage from "@assets/Aria Silverwood_1752928699319.png";
 
 export default function Portfolio() {
   const portfolioItems = [

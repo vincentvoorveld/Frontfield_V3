@@ -3,59 +3,70 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 
 export default function ContactForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // First show alert to confirm it's working
-    alert('Het formulier werkt! Je e-mailprogramma wordt nu geopend...');
-    
+    setIsSubmitting(true);
+
     const form = e.currentTarget;
     const formData = new FormData(form);
-    
-    // Get form values
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const company = formData.get('company') as string;
-    const budget = formData.get('budget') as string;
-    const message = formData.get('message') as string;
-    
-    // Validate required fields
-    if (!name || !email || !message) {
-      alert('Vul alle verplichte velden in (naam, e-mail en projectomschrijving)');
-      return;
-    }
-    
-    // Create email content
-    const subject = `Nieuwe projectaanvraag van ${name}`;
-    const body = `Hallo,
 
-Ik heb interesse in jullie webdesign diensten. Hieronder mijn gegevens:
-
-Naam: ${name}
-E-mailadres: ${email}
-Bedrijfsnaam: ${company || 'Niet opgegeven'}
-Budget indicatie: ${budget || 'Niet opgegeven'}
-
-Projectomschrijving:
-${message}
-
-Graag zou ik meer informatie ontvangen over jullie diensten.
-
-Met vriendelijke groet,
-${name}`;
-    
-    // Open email client
-    const mailtoLink = `mailto:info@frontfield.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Try multiple ways to ensure it works
     try {
-      window.location.href = mailtoLink;
+      const response = await fetch('https://formspree.io/f/mwpqvyvg', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        form.reset();
+      } else {
+        throw new Error('Formulier kon niet worden verzonden');
+      }
     } catch (error) {
-      window.open(mailtoLink, '_blank');
+      alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of neem direct contact op via info@frontfield.nl');
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <section id="contact" className="py-20 bg-neutral">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card className="shadow-sm">
+            <CardContent className="p-12 text-center">
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-primary mb-2">Bedankt voor je bericht!</h3>
+                <p className="text-muted-foreground">
+                  We hebben je aanvraag ontvangen en nemen binnen 24 uur contact met je op.
+                </p>
+              </div>
+              <Button 
+                onClick={() => setIsSubmitted(false)}
+                variant="outline"
+              >
+                Nog een bericht versturen
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-20 bg-neutral">
@@ -150,10 +161,11 @@ ${name}`;
                 <Button 
                   type="submit" 
                   size="lg"
-                  className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl px-12 py-4 text-lg"
+                  disabled={isSubmitting}
+                  className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl px-12 py-4 text-lg disabled:opacity-50 disabled:transform-none"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  Verzend aanvraag
+                  {isSubmitting ? 'Bezig met verzenden...' : 'Verzend aanvraag'}
                 </Button>
               </div>
             </form>
