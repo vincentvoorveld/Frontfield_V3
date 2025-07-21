@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Send, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,36 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    
-    try {
-      const response = await fetch('https://formspree.io/f/mwpqvyvg', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        form.reset();
-        alert('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
-      } else {
-        throw new Error('Er ging iets mis bij het verzenden van je bericht.');
-      }
-    } catch (error) {
-      alert('Er ging iets mis. Probeer het later opnieuw of neem direct contact met ons op.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section id="contact" className="py-20 bg-neutral">
@@ -51,7 +20,7 @@ export default function ContactForm() {
         
         <Card className="shadow-sm">
           <CardContent className="p-8 md:p-12">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form action="https://formspree.io/f/mwpqvyvg" method="POST" className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-foreground">
@@ -130,11 +99,10 @@ export default function ContactForm() {
                 <Button 
                   type="submit" 
                   size="lg"
-                  disabled={isSubmitting}
                   className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl px-12 py-4 text-lg"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  {isSubmitting ? "Verzenden..." : "Verzend aanvraag"}
+                  Verzend aanvraag
                 </Button>
               </div>
             </form>
