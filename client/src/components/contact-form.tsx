@@ -8,6 +8,9 @@ export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
+    // First show alert to confirm it's working
+    alert('Het formulier werkt! Je e-mailprogramma wordt nu geopend...');
+    
     const form = e.currentTarget;
     const formData = new FormData(form);
     
@@ -17,6 +20,12 @@ export default function ContactForm() {
     const company = formData.get('company') as string;
     const budget = formData.get('budget') as string;
     const message = formData.get('message') as string;
+    
+    // Validate required fields
+    if (!name || !email || !message) {
+      alert('Vul alle verplichte velden in (naam, e-mail en projectomschrijving)');
+      return;
+    }
     
     // Create email content
     const subject = `Nieuwe projectaanvraag van ${name}`;
@@ -39,7 +48,13 @@ ${name}`;
     
     // Open email client
     const mailtoLink = `mailto:info@frontfield.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink, '_self');
+    
+    // Try multiple ways to ensure it works
+    try {
+      window.location.href = mailtoLink;
+    } catch (error) {
+      window.open(mailtoLink, '_blank');
+    }
   };
 
   return (
