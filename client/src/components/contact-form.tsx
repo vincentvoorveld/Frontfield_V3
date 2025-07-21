@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Send, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5,6 +6,70 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/mwpqvyvg', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          alert('Er ging iets mis: ' + data.errors.map((error: any) => error.message).join(', '));
+        } else {
+          throw new Error('Er ging iets mis bij het verzenden.');
+        }
+      }
+    } catch (error) {
+      alert('Er ging iets mis. Probeer het later opnieuw of neem direct contact met ons op via info@frontfield.nl');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <section id="contact" className="py-20 bg-neutral">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card className="shadow-sm">
+            <CardContent className="p-8 md:p-12 text-center">
+              <div className="text-green-600 mb-4">
+                <Send className="w-16 h-16 mx-auto" />
+              </div>
+              <h2 className="text-3xl font-bold text-primary mb-4">
+                Bedankt voor je bericht!
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                We hebben je aanvraag ontvangen en nemen zo snel mogelijk contact met je op.
+              </p>
+              <Button 
+                onClick={() => setIsSubmitted(false)}
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+              >
+                Nieuw bericht verzenden
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-20 bg-neutral">
@@ -20,7 +85,7 @@ export default function ContactForm() {
         
         <Card className="shadow-sm">
           <CardContent className="p-8 md:p-12">
-            <form action="https://formspree.io/f/mwpqvyvg" method="POST" className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-foreground">
@@ -99,10 +164,11 @@ export default function ContactForm() {
                 <Button 
                   type="submit" 
                   size="lg"
+                  disabled={isSubmitting}
                   className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl px-12 py-4 text-lg"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  Verzend aanvraag
+                  {isSubmitting ? "Verzenden..." : "Verzend aanvraag"}
                 </Button>
               </div>
             </form>
