@@ -16,28 +16,58 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
+    // Get form values
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const company = formData.get('company') as string;
+    const budget = formData.get('budget') as string;
+    const message = formData.get('message') as string;
+    
+    // Create email content
+    const subject = `Nieuwe projectaanvraag van ${name}`;
+    const body = `
+Naam: ${name}
+E-mailadres: ${email}
+Bedrijfsnaam: ${company || 'Niet opgegeven'}
+Budget indicatie: ${budget || 'Niet opgegeven'}
+
+Projectomschrijving:
+${message}
+
+---
+Dit bericht is verzonden via het contactformulier op frontfield.nl
+    `.trim();
+    
+    // Try Formspree first, fallback to mailto
     try {
       const response = await fetch('https://formspree.io/f/mwpqvyvg', {
         method: 'POST',
-        body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          budget,
+          message,
+          _subject: subject
+        })
       });
       
       if (response.ok) {
         setIsSubmitted(true);
         form.reset();
       } else {
-        const data = await response.json();
-        if (data.errors) {
-          alert('Er ging iets mis: ' + data.errors.map((error: any) => error.message).join(', '));
-        } else {
-          throw new Error('Er ging iets mis bij het verzenden.');
-        }
+        throw new Error('Formspree failed');
       }
     } catch (error) {
-      alert('Er ging iets mis. Probeer het later opnieuw of neem direct contact met ons op via info@frontfield.nl');
+      // Fallback to mailto
+      const mailtoLink = `mailto:info@frontfield.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+      setIsSubmitted(true);
+      form.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -56,7 +86,7 @@ export default function ContactForm() {
                 Bedankt voor je bericht!
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                We hebben je aanvraag ontvangen en nemen zo snel mogelijk contact met je op.
+                Je e-mailprogramma wordt geopend met je aanvraag. Verstuur het e-mailbericht om je aanvraag te voltooien, of neem direct contact met ons op via info@frontfield.nl
               </p>
               <Button 
                 onClick={() => setIsSubmitted(false)}
